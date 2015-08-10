@@ -46,7 +46,7 @@ it takes 50 seconds before returning control back to `setup()`.
 A report via the TSRP looks like the following.
 Note that the `flow` property is defined as 'epsilon',
 which means that the sensor is reporting uncalibrated data,
-and `node-sensor-pod` will report the current value relative to the standard deviation of the data series.
+and `node-homework` will report the current value relative to the standard deviation of the data series.
 
         {
           "path": "/api/v1/thing/reporting",
