@@ -55,7 +55,7 @@ Note that when the AQ sensor starts,
 it takes 20 seconds before returning control back to `setup()`.
     
 A report via the TSRP looks like the following.
-Note that the properties are mostly defined as 'sigmas',
+Note that the properties are mostly defined as 'epsilon',
 which means that the sensors are reporting uncalibrated data,
 and `node-sensor-pod` will report the current value relative to the standard deviation of the data series.
 
@@ -76,12 +76,12 @@ and `node-sensor-pod` will report the current value relative to the standard dev
                   "recent"
                 ],
                 "properties": {
-                  "aqi": "sigmas",
+                  "aqi": "epsilon",
                   "flame_detected": "boolean",
-                  "smoke": "sigmas",
-                  "co": "sigmas",
-                  "no2": "sigmas",
-                  "hcho": "sigmas"
+                  "smoke": "epsilon",
+                  "co": "epsilon",
+                  "no2": "epsilon",
+                  "hcho": "epsilon"
                 }
               },
               "instances": [

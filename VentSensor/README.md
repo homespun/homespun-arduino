@@ -44,7 +44,7 @@ Note that when the MD550 sensor starts,
 it takes 50 seconds before returning control back to `setup()`.
 
 A report via the TSRP looks like the following.
-Note that the `flow` property is defined as 'sigmas',
+Note that the `flow` property is defined as 'epsilon',
 which means that the sensor is reporting uncalibrated data,
 and `node-sensor-pod` will report the current value relative to the standard deviation of the data series.
 
@@ -65,7 +65,7 @@ and `node-sensor-pod` will report the current value relative to the standard dev
                   "recent"
                 ],
                 "properties": {
-                  "flow": "sigmas",
+                  "flow": "epsilon",
                   "particulates": "pcs/liter",
                   "temperature": "celcius",
                   "humidity": "percentage"
