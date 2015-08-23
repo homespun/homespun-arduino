@@ -42,7 +42,7 @@ unsigned long sample_time = 30000;
 char packetBuffer[768];
 
 PROGMEM prog_char *loopPacket1 = "{\"path\":\"/api/v1/thing/reporting\",\"requestID\":\"";
-PROGMEM prog_char *loopPacket2 = "\",\"things\":{\"/device/climate/arduino/ventilation\":{\"prototype\":{\"device\":{\"name\":\"Return Ventilation Sensor Array\",\"maker\":\"Modern Device/Seed Studio\"},\"name\":\"true\",\"status\":[\"present\",\"absent\",\"recent\"],\"properties\":{\"flow\":\"epsilon\",\"particulates\":\"pcs/liter\",\"temperature\":\"celcius\",\"humidity\":\"percentage\"}},\"instances\":[{\"name\":\"Return Ventilation Sensor\",\"status\":\"present\",\"unit\":{\"serial\":\"";
+PROGMEM prog_char *loopPacket2 = "\",\"things\":{\"/device/climate/arduino/ventilation\":{\"prototype\":{\"device\":{\"name\":\"Return Ventilation Sensor Array\",\"maker\":\"Modern Device/Seed Studio\"},\"name\":\"true\",\"status\":[\"present\",\"absent\",\"recent\"],\"properties\":{\"flow\":\"epsilon\",\"particulates\":\"pcs/cubicmeter\",\"temperature\":\"celcius\",\"humidity\":\"percentage\"}},\"instances\":[{\"name\":\"Return Ventilation Sensor\",\"status\":\"present\",\"unit\":{\"serial\":\"";
 PROGMEM prog_char *loopPacket3 = "\",\"udn\":\"195a42b0-ef6b-11e2-99d0-";
 PROGMEM prog_char *loopPacket4 = "-ventilation\"},\"info\":{\"particulates\":";
 PROGMEM prog_char *loopPacket5 = ",\"flow\":";
@@ -130,6 +130,7 @@ void loop() {
 
   ratio = low_pulse_occupancy / (sample_time * 10.0);                       // Integer percentage 0=>100
   concentration = 1.1*pow(ratio, 3) - 3.8*pow(ratio, 2) + 520*ratio + 0.62; // using spec sheet curve
+  concentration = concentration * 2.8316846592;                             // pcs/0.01cf => pcs/m3
   low_pulse_occupancy = 0;
 
   strcpy(packetBuffer,(char*)pgm_read_word(&loopPacket1) );
